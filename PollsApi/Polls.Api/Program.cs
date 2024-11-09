@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Polls.Business.AutoMapper;
 using Polls.Business.Service;
@@ -11,6 +12,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Context
 builder.Services.AddDbContext<PollDbContext>(
     options => options.UseNpgsql(builder.Configuration.GetConnectionString("PollsDbConnection")));
+
+// Repository
+builder.Services.AddScoped<IPollRepository<Poll>, PollRepository>();
+
+// Mapper
+builder.Services.AddAutoMapper(typeof(MapperProfile));
+
+// Service
+builder.Services.AddScoped<IPollService<PollDto, PollInsertDto, PollUpdateDto>, PollService>();
+
+builder.Services.AddControllers();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

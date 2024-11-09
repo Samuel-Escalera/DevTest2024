@@ -1,11 +1,11 @@
-using Microsoft.AspNetCore.Http.HttpResults;
+
 using Microsoft.AspNetCore.Mvc;
 using Polls.Business.Service;
 using Polls.Core.DTOs;
 
 namespace Polls.Api.Controllers;
 
-[Microsoft.AspNetCore.Components.Route("api/v1/[controller]")]
+[Route("api/v1/[controller]")]
 [ApiController]
 public class PollsController
 {

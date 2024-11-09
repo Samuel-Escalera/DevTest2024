@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Polls.Core.Models;
 
 namespace Polls.DataAccess.Repository;
@@ -10,9 +11,11 @@ public class PollRepository : IPollRepository<Poll>
     {
         _context = context;
     }
-    public Task<IEnumerable<Poll>> Get()
+    public async Task<IEnumerable<Poll>> Get()
     {
-        throw new NotImplementedException();
+        var polls = await _context.Polls.ToListAsync();
+        
+        return polls;
     }
 
     public Task<Poll> Add(Poll entity)

@@ -15,6 +15,7 @@ public class PollService : IPollService<PollDto, PollInsertDto, PollUpdateDto>
         _pollRepository = pollRepository;
         _mapper = mapper;
     }
+    
     public async Task<IEnumerable<PollDto>> Get()
     {
        var polls = await _pollRepository.Get();
