@@ -1,12 +1,27 @@
+using AutoMapper;
 using Polls.Core.DTOs;
+using Polls.Core.Models;
+using Polls.DataAccess.Repository;
 
 namespace Polls.Business.Service;
 
 public class PollService : IPollService<PollDto, PollInsertDto, PollUpdateDto>
 {
-    public Task<IEnumerable<PollDto>> Get()
+    private IPollRepository<Poll> _pollRepository;
+    private IMapper _mapper;
+
+    public PollService(IPollRepository<Poll> pollRepository, IMapper mapper)
     {
-        throw new NotImplementedException();
+        _pollRepository = pollRepository;
+        _mapper = mapper;
+    }
+    public async Task<IEnumerable<PollDto>> Get()
+    {
+       var polls = await _pollRepository.Get();
+
+       var pollDtos = _mapper.Map<IEnumerable<PollDto>>(polls);
+
+       return pollDtos;
     }
 
     public Task<PollDto> Add(PollDto entity)
