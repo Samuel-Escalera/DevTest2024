@@ -27,5 +27,12 @@ public class PollOptionRepository : IPollOptionRepository<PollOption>
 
     public Task Save()
     => _context.SaveChangesAsync();
-    
+
+    public async Task<PollOption> sumAVote(PollOption pollOption)
+    {
+        _context.PollOptions.Update(pollOption);
+        _context.SaveChanges();
+
+        return pollOption;
+    }
 }

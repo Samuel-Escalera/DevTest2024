@@ -43,7 +43,6 @@ public class PollsController
     {
         var voteDto = await _pollService.Vote(voteInsertDto);
         
-        
         return voteDto;
     }
 }

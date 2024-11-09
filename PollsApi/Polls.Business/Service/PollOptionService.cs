@@ -32,4 +32,9 @@ public class PollOptionService : IPollOptionService<PollOptionDto, PollOptionIns
         
         return pollOptionDto;
     }
+
+    public Task<PollOptionDto> sumAVote(PollOptionUpdateDto pollOptionUpdate)
+    {
+        throw new NotImplementedException();
+    }
 }
