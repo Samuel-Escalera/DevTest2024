@@ -3,5 +3,5 @@ namespace Polls.Business.Service;
 public interface IService<TDto, TInsertDto, TUpdateDto>
 {
     Task<IEnumerable<TDto>> Get();
-    Task<TDto> Add(TDto entity);
+    Task<TDto> Add(TInsertDto entity);
 }

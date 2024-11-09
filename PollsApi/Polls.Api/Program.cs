@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Polls.Business.AutoMapper;
 using Polls.Business.Service;
 using Polls.Core.DTOs;
+using Polls.Core.DTOs.PollOptionDtos;
 using Polls.Core.Models;
 using Polls.DataAccess;
 using Polls.DataAccess.Repository;
@@ -15,12 +16,15 @@ builder.Services.AddDbContext<PollDbContext>(
 
 // Repository
 builder.Services.AddScoped<IPollRepository<Poll>, PollRepository>();
+builder.Services.AddScoped<IPollOptionRepository<PollOption>, PollOptionRepository>();
 
 // Mapper
 builder.Services.AddAutoMapper(typeof(MapperProfile));
 
 // Service
 builder.Services.AddScoped<IPollService<PollDto, PollInsertDto, PollUpdateDto>, PollService>();
+builder.Services
+    .AddScoped<IPollOptionService<PollOptionDto, PollOptionInsertDto, PollOptionUpdateDto>, PollOptionService>();
 
 builder.Services.AddControllers();
 
@@ -40,6 +44,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-//app.MapControllers();
+app.MapControllers();
 
 app.Run();

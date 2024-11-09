@@ -12,19 +12,26 @@ public class PollRepository : IPollRepository<Poll>
         _context = context;
     }
     public async Task<IEnumerable<Poll>> Get()
+        => await _context.Polls.ToListAsync();
+
+    public async Task<Poll> Add(Poll poll)
     {
-        var polls = await _context.Polls.ToListAsync();
+        _context.Polls.Add(poll);
+        _context.SaveChanges();
+
+        return poll;
+    }
+
+    public Task Save()
+    => _context.SaveChangesAsync();
+    
+
+    public async Task<Vote> Vote(Vote vote)
+    {
+        _context.Votes.Add(vote);
+        _context.SaveChanges();
         
-        return polls;
-    }
-
-    public Task<Poll> Add(Poll entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<Poll> Vote(int id)
-    {
-        throw new NotImplementedException();
+        return vote;
+        
     }
 }

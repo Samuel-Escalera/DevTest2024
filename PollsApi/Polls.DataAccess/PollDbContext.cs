@@ -10,6 +10,7 @@ public class PollDbContext : DbContext
     {}
     
     public DbSet<Poll> Polls { get; set; }
+    public DbSet<PollOption> PollOptions { get; set; }
     public DbSet<Vote> Votes { get; set; }
 
 }

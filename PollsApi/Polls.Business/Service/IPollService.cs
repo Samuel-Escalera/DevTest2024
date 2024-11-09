@@ -1,6 +1,8 @@
+using Polls.Core.DTOs.VoteDto;
+
 namespace Polls.Business.Service;
 
-public interface IPollService<TDto, TInput, TUpdate> : IService<TDto, TInput, TUpdate>
+public interface IPollService<TDto, TInputDto, TUpdateDto> : IService<TDto, TInputDto, TUpdateDto>
 {
-    Task<TDto> Vote(int id);
+    Task<VoteDto> Vote(VoteInsertDto voteInsertDto);
 }
