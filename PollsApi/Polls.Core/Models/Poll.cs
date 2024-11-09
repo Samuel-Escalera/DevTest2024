@@ -9,6 +9,5 @@ public class Poll
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int PollId { get; set; }
     public string Name { get; set; }
-
-    private ICollection<PollOption> options { get; set; }
+    public virtual ICollection<PollOption> options { get; set; }
 }

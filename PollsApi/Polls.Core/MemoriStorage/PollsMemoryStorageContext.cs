@@ -4,7 +4,7 @@ namespace Polls.Core.MemoriStorage;
 
 public class PollsMemoryStorageContext
 {
-    public IEnumerable<Poll> Polls { get; set; }
+    public List<Poll> Polls { get; set; }
 
     public PollsMemoryStorageContext()
     {

@@ -10,4 +10,10 @@ public class PollOption
     public int PollOptionId { get; set; }
     public string Name { get; set; }
     public int Votes { get; set; }
+    
+    
+    public int PollId { get; set; }
+    
+    [ForeignKey("PollId")]
+    public virtual Poll Poll { get; set; }
 }
